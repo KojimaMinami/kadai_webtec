@@ -1,59 +1,70 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Maps example</title>
-    <style>
-      #map_canvas {
-        width: 600px;
-        height: 600px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Simple maps example</h1>
 
-    <div id="map_canvas"></div>
-    <script>
-    function initMap() {
-      var myOptions = {
-        zoom: 8,
-        center: {lat: 53.480759, lng: -2.242631},
-        mapTypeId: google.maps.MapTypeId.TERRAIN,
-        disableDefaultUI: true,
-        // Step 4. Customize displayed controls
-        zoomControl: true,
-        mapTypeControl: true,
-        scaleControl: true
-      }
-      var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Google Maps example</title>
+        <style>
+            #map_canvas {
+                width: 600px;
+                height: 600px;
+            }
+        </style>
+    </head>
 
-      // Step 2. Add custom icon
+    <body>
+        <h1>Simple maps example</h1>
 
-      var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+        <div id="map_canvas"></div>
+        <script>
+            function initMap() {
+                var myOptions = {
+                    zoom: 8,
+                    center: {
+                        lat: 37.489983,
+                        lng: 139.927749
+                    },
+                    mapTypeId: google.maps.MapTypeId.TERRAIN,
+                    disableDefaultUI: true,
+                    // Step 4. Customize displayed controls
+                    zoomControl: true,
+                    mapTypeControl: true,
+                    scaleControl: true
+                }
+                var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-      var marker = new google.maps.Marker({
-        position: {lat: 53.480759, lng: -2.242631},
-        icon: iconBase + 'flag_maps.png',
-        map: map
-      });
+                // Step 2. Add custom icon
 
-      // Step 3. Add info window
+                var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 
-      var contentString = '<div id="content"><h2 id="firstHeading" class="firstHeading">Custom info window</h2><p>This is a cool custom info window.</p></div>';
+                var marker = new google.maps.Marker({
+                    position: {
+                        lat: 37.489983,
+                        lng: 139.927749
+                    },
+                    icon: iconBase + 'flag_maps.png',
+                    map: map
+                });
 
-      var infowindow = new google.maps.InfoWindow({
-        content: contentString
-      });
+                // Step 3. Add info window
 
-      marker.addListener('click', function() {
-        infowindow.open(map, marker);
-      });
-    }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiV2ZbFIYuD3N4hzGLstSn2e4ZG5A7QlU&callback=initMap"
-    async defer></script>
-  </body>
+                var contentString =
+                    '<div id="content"><h2 id="firstHeading" class="firstHeading">福島県会津若松市</h2><p>自分の地元です！</p></div>';
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
+            }
+        </script>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvfFpH53bErxwA_j-n116_-r4dNxKIQC8&callback=initMap"
+            async defer></script>
+    </body>
+
 </html>
